@@ -32,7 +32,7 @@ export class ShopComponent implements OnInit {
         this.TotatlCount = value.totalCount;
         this.ProductParam.pageNumber = value.pageNumber;
         this.ProductParam.pageSize = value.pageSize;
-        this.toast.success('Product Loaded Successfully', 'SUCCESS');
+        // this.toast.success('Product Loaded Successfully', 'SUCCESS');
       },
     });
   }

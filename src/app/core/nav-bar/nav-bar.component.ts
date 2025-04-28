@@ -17,33 +17,37 @@ export class NavBarComponent implements OnInit {
   constructor(
     private basketService: BasketService,
     private _service: CoreService,
-    private router:Router
+    private router: Router
   ) {}
   count: Observable<IBasket>;
   ngOnInit(): void {
     const basketId = localStorage.getItem('basketId');
+    if (basketId) {
+      this.basketService.GetBasket(basketId).subscribe({
+        next: (value) => {
+          console.log(value);
+          this.count = this.basketService.basket$;
+        },
+        error(err) {
+          console.log(err);
+        },
+      });
+    }
 
-    this.basketService.GetBasket(basketId).subscribe({
-      next: (value) => {
-        console.log(value);
-        this.count = this.basketService.basket$;
-      },
-      error(err) {
-        console.log(err);
-      },
-    });
     this._service.getUserName().subscribe();
-    this._service.userName$.subscribe(value=>{
-      this.userName=value;
-    })
+    this._service.userName$.subscribe(value => {
+      this.userName = value;
+    });
   }
-  logout(){ 
+
+  logout() {
     this._service.logout().subscribe({
-      next:()=>{
-        this.router.navigateByUrl('/')
+      next: () => {
+        this.router.navigateByUrl('/');
       }
-    })
+    });
   }
+
   ToggleDropDown() {
     this.visibale = !this.visibale;
   }
