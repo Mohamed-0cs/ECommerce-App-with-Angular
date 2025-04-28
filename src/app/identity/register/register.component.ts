@@ -11,13 +11,17 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   fromGroup: FormGroup;
-  constructor(private fb: FormBuilder,
-    private _service:IdentityService,
-    private toast:ToastrService,
-    private route:Router
+  isSubmitting = false;
+
+  constructor(
+    private fb: FormBuilder,
+    private _service: IdentityService,
+    private toast: ToastrService,
+    private route: Router
   ) {}
+
   ngOnInit(): void {
-    this.formValidation()
+    this.formValidation();
   }
 
   formValidation() {
@@ -29,13 +33,12 @@ export class RegisterComponent implements OnInit {
         '',
         [
           Validators.required,
-          Validators.pattern(
-        /^(?=.*[0-9])(?=.*[#$@!.\-])[A-Za-z\d#$@!.\-]{8,}$/
-          ),
+          Validators.pattern(/^(?=.*[0-9])(?=.*[#$@!.\-])[A-Za-z\d#$@!.\-]{8,}$/),
         ],
       ],
     });
   }
+
   get _username() {
     return this.fromGroup.get('UserName');
   }
@@ -48,20 +51,26 @@ export class RegisterComponent implements OnInit {
   get _password() {
     return this.fromGroup.get('password');
   }
-  Submit(){
-    if(this.fromGroup.valid){
-      this._service.register(this.fromGroup.value).subscribe({
-        next:(value) =>{
-          console.log(value);
-          this.toast.success("Register success , please confierm your email",'success'.toUpperCase())
-          this.route.navigateByUrl('/Account/Login')
-        },
-        error:(err:any)=> {
-          console.log(err);
-          this.toast.error(err.error.message,'error'.toUpperCase())
 
+  Submit() {
+    if (this.fromGroup.valid && !this.isSubmitting) {
+      this.isSubmitting = true;
+      this._service.register(this.fromGroup.value).subscribe({
+        next: (value) => {
+          this.toast.success("Register success, please confirm your email", 'SUCCESS');
+          this.route.navigateByUrl('/Account/Login');
         },
-      })
+        error: (err) => {
+          console.error('Registration error:', err);
+          this.toast.error(
+            typeof err === 'string' ? err : 'Registration failed. Please try again.',
+            'ERROR'
+          );
+        },
+        complete: () => {
+          this.isSubmitting = false;
+        }
+      });
     }
   }
 }

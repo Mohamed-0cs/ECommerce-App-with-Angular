@@ -6,8 +6,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatBadgeModule} from '@angular/material/badge';
+import { FooterComponent } from './footer/footer.component';
+
 @NgModule({
-  declarations: [NavBarComponent],
+  declarations: [
+    NavBarComponent,
+    FooterComponent
+  ],
   imports: [
     CommonModule, 
     RouterModule,
@@ -16,6 +21,9 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatButtonModule,
     MatBadgeModule
   ],
-  exports: [NavBarComponent],
+  exports: [
+    NavBarComponent,
+    FooterComponent
+  ],
 })
 export class CoreModule {}
