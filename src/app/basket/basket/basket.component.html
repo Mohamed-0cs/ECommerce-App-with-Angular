@@ -26,7 +26,11 @@
                             </a>
                         </td>
                         <td>
-                            <img src="https://localhost:7115/{{item.image}}" class="product-image img-fluid" alt="">
+                            <div class="image-container">
+                                <img [src]="getImageUrl(item.image)" 
+                                     class="product-image img-fluid" 
+                                     [alt]="item.name">
+                            </div>
                         </td>
                         <td class="description">
                             {{item.description}}

@@ -27,11 +27,25 @@ const routes: Routes = [
     loadChildren: () => import('./orders/orders.module').then((m) => m.OrdersModule),
     canActivate:[authGuard]
   },
+
+  // {
+    
+  //     path: 'login',
+  //     // loadChildren: () => import('./login/login.module').then(m => m.LoginModule) 
+
+  // },
+  {
+    path:'admin',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
+
   {
     path: 'about',
     loadChildren: () => import('./about/about.module').then((m) => m.AboutModule),
+
   },
   { path: '**', redirectTo: '', pathMatch: 'full' },
+  
+ 
 ];
 
 @NgModule({
