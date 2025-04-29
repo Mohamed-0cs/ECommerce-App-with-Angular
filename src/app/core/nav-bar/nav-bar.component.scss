@@ -4,15 +4,13 @@ $secondary-color: #474c66;
 $accent-color: #ff4081;
 $light-color: #ffffff;
 $dark-color: #212121;
-$navbar-height: 60px;
+$navbar-height: 40px;
 $navbar-padding: 1rem;
 $input-border-radius: 0.5rem;
 $transition-duration: 0.3s;
 
 .navbar {
-  background: linear-gradient(45deg, $primary-color, $secondary-color);
-  padding: $navbar-padding;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: $dark-color;
 
   .navbar-brand {
     .logo {
@@ -33,11 +31,11 @@ $transition-duration: 0.3s;
           background-color: rgba(255, 255, 255, 0.1);
           border-radius: 0.5rem;
         }
-      &.active{
-        color: $accent-color;
-        background-color: rgba(255, 255, 255, 0.1);
-        border-radius: 0.5rem;
-      }
+        &.active {
+          color: $accent-color;
+          background-color: rgba(255, 255, 255, 0.1);
+          border-radius: 0.5rem;
+        }
       }
     }
   }
@@ -48,7 +46,6 @@ $transition-duration: 0.3s;
         border-radius: $input-border-radius 0 0 $input-border-radius;
         border: none;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
       }
 
       .btn-light {

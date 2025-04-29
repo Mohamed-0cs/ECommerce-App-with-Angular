@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { ShopRoutingModule } from './shop-routing.module';
+import { BestSellersComponent } from './best-sellers/best-sellers.component';
 
 
 
@@ -14,7 +15,8 @@ import { ShopRoutingModule } from './shop-routing.module';
   declarations: [
     ShopComponent,
     ShopItemComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    BestSellersComponent
   ],
   imports: [
     ShopRoutingModule,
@@ -23,7 +25,7 @@ import { ShopRoutingModule } from './shop-routing.module';
     NgxImageZoomModule,
   ],
   exports:[
-   
+    ShopItemComponent
   ]
 })
 export class ShopModule { }
