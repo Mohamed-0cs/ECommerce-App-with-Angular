@@ -1,0 +1,26 @@
+<div *ngIf="isAdmin; else notAdmin" class="admin-container">
+  <aside class="sidebar">
+    <nav>
+      <ul>
+        <li><a routerLink="users" routerLinkActive="active-link">Users</a></li>
+        <li><a routerLink="products" routerLinkActive="active-link">Products</a></li>
+        <li><a routerLink="orders" routerLinkActive="active-link">Orders</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <div class="main-content">
+    <header class="navbar">
+      <div class="navbar-title">Admin Dashboard</div>
+      <button (click)="logout()">Logout</button>
+    </header>
+
+    <main class="content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>
+
+<ng-template #notAdmin>
+  <p>You do not have permission to view this page.</p>
+</ng-template>

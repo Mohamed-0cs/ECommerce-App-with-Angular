@@ -126,7 +126,7 @@ export class BasketService {
     return {
       id: product.id,
       category: product.categoryName,
-      image: product.photos[0].imageName,
+      image: product.photos && product.photos.length > 0 ? product.photos[0].imageName : null,
       name: product.name,
       price: product.newPrice,
       qunatity: quantity,

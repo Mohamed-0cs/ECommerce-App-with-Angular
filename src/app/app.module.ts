@@ -11,6 +11,7 @@ import { loaderInterceptor } from './core/Interceptor/loader.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { credentialsInterceptor } from './core/Interceptor/credentials.interceptor';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { credentialsInterceptor } from './core/Interceptor/credentials.intercept
       timeOut:1500,
       progressBar:true,
     }),
+    HttpClientModule,
     
 ],
   providers: [
